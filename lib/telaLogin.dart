@@ -153,7 +153,7 @@ Widget buildManterConectado(){
           ),
         ),
         const Text(
-          'Manter conectado?',
+          'Manter conectado',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -184,6 +184,34 @@ Widget buildManterConectado(){
             fontWeight: FontWeight.bold,
           ),
         )
+      ),
+    );
+  }
+
+  Widget buildCadastrarBt(){
+    return GestureDetector(
+      onTap: () => print("Botão de cadastrar pressionado"),
+      child: RichText(
+        text: const TextSpan(
+          children: [
+            TextSpan(
+              text: 'Ainda não possui uma conta?',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            TextSpan(
+              text: ' Cadastrar',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold
+              )
+            )
+          ],
+        ),
       ),
     );
   }
@@ -235,6 +263,7 @@ Widget buildManterConectado(){
                     buildEsqueciSenhaBt(),
                     buildManterConectado(),
                     buildLoginBt(),
+                    buildCadastrarBt(),
                   ],
                 ),
                 ),
