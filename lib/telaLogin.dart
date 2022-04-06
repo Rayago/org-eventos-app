@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import './telaCadastro.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key? key}) : super(key: key);
@@ -190,12 +191,14 @@ Widget buildManterConectado(){
 
   Widget buildCadastrarBt(){
     return GestureDetector(
-      onTap: () => print("Botão de cadastrar pressionado"),
+      onTap: () {print("Botão de cadastrar pressionado"); 
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => TelaCadastro(),),);
+                },
       child: RichText(
         text: const TextSpan(
           children: [
             TextSpan(
-              text: 'Ainda não possui uma conta?',
+              text: 'Ainda não possui uma conta? ',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
@@ -203,13 +206,13 @@ Widget buildManterConectado(){
               ),
             ),
             TextSpan(
-              text: ' Cadastrar',
+              text: 'Cadastrar',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold
-              )
-            )
+              ),
+            ),
           ],
         ),
       ),
