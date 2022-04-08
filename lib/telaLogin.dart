@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:org_eventos_app/resetSenha.dart';
 import './telaCadastro.dart';
 
 class TelaLogin extends StatefulWidget {
@@ -120,7 +121,7 @@ Widget buildEsqueciSenhaBt() {
   return Container(
     alignment: Alignment.centerRight,
     child: TextButton(
-      onPressed: () => print("Esqueci a senha pressionado"),
+      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ResetSenhaTela()),),
       style: TextButton.styleFrom(
           padding: const EdgeInsets.only(top: 20),
         ),
@@ -249,26 +250,26 @@ Widget buildManterConectado(){
                     vertical: 120
                   ),
                   child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget> [
-                    const Text(
-                      'Entrar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget> [
+                      const Text(
+                        'Entrar',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height:50),
-                    buildEmail(),
-                    const SizedBox(height:20),
-                    buildSenha(),
-                    buildEsqueciSenhaBt(),
-                    buildManterConectado(),
-                    buildLoginBt(),
-                    buildCadastrarBt(),
-                  ],
-                ),
+                      const SizedBox(height:50),
+                      buildEmail(),
+                      const SizedBox(height:20),
+                      buildSenha(),
+                      buildEsqueciSenhaBt(),
+                      buildManterConectado(),
+                      buildLoginBt(),
+                      buildCadastrarBt(),
+                    ],
+                  ),
                 ),
               ),
             ]

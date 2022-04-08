@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:org_eventos_app/primaryButton.dart';
 import 'package:org_eventos_app/telaLogin.dart';
 
 class TelaCadastro extends StatelessWidget {
@@ -17,8 +18,8 @@ class TelaCadastro extends StatelessWidget {
               child: Text(
                 'Criar conta',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+                  color: Colors.black,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold
                 ),
               ),
@@ -49,8 +50,19 @@ class TelaCadastro extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10,),
-
+            SizedBox(height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: CadastroForm(),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: PrimaryButton(),
+            ),
           ],
         ),
       ),
@@ -66,25 +78,73 @@ class CadastroForm extends StatefulWidget {
 }
 
 class _CadastroFormState extends State<CadastroForm> {
+  bool _escondido = true;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildInputForm('Nome'),
-        buildInputForm('Sobrenome'),
-        buildInputForm('Telefone'),
-        buildInputForm('Email'),
-        buildInputForm('Senha'),
-        buildInputForm('Confirme a senha'),
+        buildInputForm('Nome', false),
+        buildInputForm('Sobrenome', false),
+        buildInputForm('Telefone', false),
+        buildInputForm('Email', false),
+        buildInputForm('Senha', true),
+        buildInputForm('Confirme a senha', true),
       ],
       
     );
   }
 
-  Padding buildInputForm(String hint){
+  Widget buildCadastrarBt(){
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5,
+        onPressed: () => print('Botão de cadastrar pressionado'),
+        padding: const EdgeInsets.all(15),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15)
+        ),
+        color: Colors.white,
+        child: const Text(
+          'CADASTRAR',
+          style: TextStyle(
+            color: Color(0xff3f51b5),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        )
+      ),
+    );
+  }
+
+  Padding buildInputForm(String dica, bool senha){
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5),
-      child: TextFormField(decoration: InputDecoration(hintText: hint),),
-    );
+      child: TextFormField(
+        obscureText: senha ? _escondido : false ,
+        decoration: InputDecoration(
+          hintText: dica, 
+          hintStyle: TextStyle(color: Color(0xFF979797)),
+          focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Color(0xFF1B383A)),),
+            suffixIcon: senha 
+              ? IconButton(
+                  onPressed: (){
+                    setState(() {
+                      _escondido = !_escondido;
+                    });
+                  }, 
+                  icon: _escondido 
+                  ? Icon(
+                      Icons.visibility_off, 
+                      color: Color(0xFF1B383A)) 
+                      :Icon(
+                        Icons.visibility,
+                        color: Color(0xFF1B383A),
+                        ),) 
+              : null,
+        ),
+      ),);
   }
 }
