@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'telaLogin.dart';
+//import 'telaLogin.dart';
+import 'onboard.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Tela de login',
       debugShowCheckedModeBanner: false,
-      home: TelaLogin()
+      home: Onboard(),
     );
   }
 }

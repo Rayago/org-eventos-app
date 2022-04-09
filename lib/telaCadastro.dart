@@ -61,7 +61,7 @@ class TelaCadastro extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: PrimaryButton(),
+              child: PrimaryButton(textoBt: 'CADASTRAR'),
             ),
           ],
         ),

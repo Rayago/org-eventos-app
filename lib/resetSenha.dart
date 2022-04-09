@@ -10,7 +10,7 @@ class ResetSenhaTela extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,7 +51,7 @@ class ResetSenhaTela extends StatelessWidget {
                       builder: (context) => TelaLogin(),
                     ));
                 },
-                child: PrimaryButton(textoBt: 'Reiniciar senha'),
+                child: PrimaryButton(textoBt: 'ENVIAR'),
             ),
           ],
         )

@@ -3,8 +3,8 @@ import 'package:org_eventos_app/telaLogin.dart';
 import 'package:org_eventos_app/telaCadastro.dart';
 
 class PrimaryButton extends StatelessWidget {
-  final String? textoBt;
-  PrimaryButton({@required this.textoBt});
+  final String textoBt;
+  PrimaryButton({required this.textoBt});
   @override
   Widget build(BuildContext context){
     return Container(
@@ -21,8 +21,8 @@ class PrimaryButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(15)
         ),
         color: const Color(0xff3f51b5),
-        child: const Text(
-          'CADASTRAR',
+        child: Text(
+          textoBt,
           style: TextStyle(
             color: Colors.white,
             fontSize: 18,
