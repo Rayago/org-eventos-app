@@ -1,6 +1,14 @@
-# org_eventos_app
+# Aplicativo de turismo
 
-A new Flutter project.
+Avaliação da disciplina Programação para Dispositivos Móveis, ministrada pelo docente Kenniston Arraes Bonfim.
+Componentes do grupo:
+- Eduardo Ofuji
+- Marco Paulo Nocello
+- Pedro Faleiros
+- Raymundo Guimarães
+
+[Protótipo do projeto no Figma](https://www.figma.com/file/ElYFagSMAuD8Y67BmaOYWL/Tourism-App)
+[Artigo base para o projeto](https://drive.google.com/file/d/1Jqb0ZKMdxVTeUkJWx0nOQWC_hAmtZbvS/view?usp=sharing)
 
 ## Getting Started
 
