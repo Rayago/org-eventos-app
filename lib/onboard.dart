@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:org_eventos_app/primaryButton.dart';
 import 'package:org_eventos_app/contOnboard.dart';
 import 'telaLogin.dart';
 
 class Onboard extends StatefulWidget {
+  const Onboard({Key? key}) : super(key: key);
+
   @override
   _OnboardState createState() => _OnboardState();
 }
@@ -43,22 +44,25 @@ class _OnboardState extends State<Onboard> {
                     children: [
                       Image.asset(
                         conteudos[i].imagem,
-                        height: 300,
-                      ),
-                      Text(
-                        conteudos[i].titulo,
-                        style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        height: 200,
                       ),
                       SizedBox(height: 20),
                       Text(
+                        conteudos[i].titulo,
+                        style: const TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 50),
+                      Text(
                         conteudos[i].descricao,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey,
+                        style: const TextStyle(
+                          fontSize: 23,
+                          color: Colors.white,
                         )
                       ),
                     ],
@@ -73,12 +77,12 @@ class _OnboardState extends State<Onboard> {
               children: List.generate(
                 conteudos.length,
                 (index) => buildDot(index, context)
-                )
-            )
+                ),
+            ),
           ),
           Container(
             height: 55,
-            margin: EdgeInsets.all(40),
+            margin: const EdgeInsets.all(40),
             width: double.infinity,
             color: Theme.of(context).primaryColor,
             child: FlatButton(
@@ -88,12 +92,12 @@ class _OnboardState extends State<Onboard> {
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (_) => TelaLogin(),
+                      builder: (_) => const TelaLogin(),
                     ),
                   );
                 };
                 _controller.nextPage(
-                    duration: Duration(milliseconds: 100), 
+                    duration: const Duration(milliseconds: 100), 
                     curve: Curves.bounceIn
                   );
               },
@@ -113,7 +117,7 @@ class _OnboardState extends State<Onboard> {
     return Container(
                 height: 10,
                 width: indexAtual == index ? 25 : 10,
-                margin: EdgeInsets.only(right: 5),
+                margin: const EdgeInsets.only(right: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Theme.of(context).primaryColor,

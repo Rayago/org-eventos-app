@@ -18,7 +18,7 @@ class TelaCadastro extends StatelessWidget {
               child: Text(
                 'Criar conta',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 22,
                   fontWeight: FontWeight.bold
                 ),
@@ -33,6 +33,9 @@ class TelaCadastro extends StatelessWidget {
                 children: [
                   Text(
                     'Já possui cadastro?',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                   SizedBox(
                     width: 5,
@@ -45,6 +48,9 @@ class TelaCadastro extends StatelessWidget {
                     },
                     child: Text(
                       'Entrar',
+                      style: TextStyle(
+                        color: Colors.white,
+                      )
                     ),
                   ),
                 ],
@@ -109,7 +115,7 @@ class _CadastroFormState extends State<CadastroForm> {
         child: const Text(
           'CADASTRAR',
           style: TextStyle(
-            color: Color(0xff3f51b5),
+            color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -125,9 +131,9 @@ class _CadastroFormState extends State<CadastroForm> {
         obscureText: senha ? _escondido : false ,
         decoration: InputDecoration(
           hintText: dica, 
-          hintStyle: TextStyle(color: Color(0xFF979797)),
+          hintStyle: TextStyle(color: Color(0xFFfafafc)),
           focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xFF1B383A)),),
+              borderSide: BorderSide(color: Color(0xFFfafafc)),),
             suffixIcon: senha 
               ? IconButton(
                   onPressed: (){
@@ -138,10 +144,10 @@ class _CadastroFormState extends State<CadastroForm> {
                   icon: _escondido 
                   ? Icon(
                       Icons.visibility_off, 
-                      color: Color(0xFF1B383A)) 
+                      color: Color(0xFFfafafc)) 
                       :Icon(
                         Icons.visibility,
-                        color: Color(0xFF1B383A),
+                        color: Color(0xFFfafafc),
                         ),) 
               : null,
         ),

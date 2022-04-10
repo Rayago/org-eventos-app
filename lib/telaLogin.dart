@@ -240,6 +240,7 @@ Widget buildManterConectado(){
                       Color(0x993f51b5),
                       Color(0xcc3f51b5),
                       Color(0xff3f51b5),
+                      Color(0xff00000a2),
                     ],
                   ),
                 ),

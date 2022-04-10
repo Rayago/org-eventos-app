@@ -10,9 +10,9 @@ class ResetarForm extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           hintText: 'E-mail',
-          hintStyle: TextStyle(color: Color(0xff3f51b5)),
+          hintStyle: TextStyle(color: Color(0xFFfafafc)),
           focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff3f51b5)))),
+              borderSide: BorderSide(color: Color(0xFFfafafc)))),
           ),
         );
   }

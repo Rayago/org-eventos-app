@@ -20,7 +20,7 @@ class ResetSenhaTela extends StatelessWidget {
             Text(
               'Esqueci minha senha',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
@@ -31,7 +31,7 @@ class ResetSenhaTela extends StatelessWidget {
             Text(
               'Por favor, entre com seu e-mail',
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
@@ -52,6 +52,19 @@ class ResetSenhaTela extends StatelessWidget {
                     ));
                 },
                 child: PrimaryButton(textoBt: 'ENVIAR'),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TelaLogin(),
+                    ));
+                },
+                child: PrimaryButton(textoBt: 'VOLTAR'),
             ),
           ],
         )

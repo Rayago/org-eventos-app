@@ -15,7 +15,12 @@ class PrimaryButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(16), color: Color(0xff3f51b5),),
         child: RaisedButton(
         elevation: 5,
-        onPressed: () => print('Botão de cadastrar 2 pressionado'),
+        onPressed: (){ 
+          print('Botão de cadastrar 2 pressionado');
+          Navigator.push(
+            context, MaterialPageRoute(
+              builder: (context) => TelaLogin()),);
+        },
         padding: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15)
