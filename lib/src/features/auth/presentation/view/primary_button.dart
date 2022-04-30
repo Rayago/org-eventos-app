@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:org_eventos_app/telaLogin.dart';
-import 'package:org_eventos_app/telaCadastro.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String textoBt;
@@ -17,9 +16,10 @@ class PrimaryButton extends StatelessWidget {
         elevation: 5,
         onPressed: (){ 
           print('Botão de cadastrar 2 pressionado');
-          Navigator.push(
+          /* Navigator.push(
             context, MaterialPageRoute(
-              builder: (context) => TelaLogin()),);
+              builder: (context) => TelaLogin()),); */
+          Modular.to.pushNamed('/');
         },
         padding: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(

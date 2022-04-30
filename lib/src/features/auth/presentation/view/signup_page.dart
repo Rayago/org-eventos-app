@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:org_eventos_app/primaryButton.dart';
-import 'package:org_eventos_app/telaLogin.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class TelaCadastro extends StatelessWidget {
+import 'primary_button.dart';
+
+class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +33,7 @@ class TelaCadastro extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'Já possui cadastro?',
+                    'Já possui Signup?',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -42,9 +43,10 @@ class TelaCadastro extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: (){
-                      Navigator.push(
+                      /* Navigator.push(
                         context, MaterialPageRoute(
-                          builder: (context) => TelaLogin()),);
+                          builder: (context) => TelaLogin()),); */
+                          Modular.to.pushNamed('/auth/');
                     },
                     child: Text(
                       'Entrar',
@@ -60,7 +62,7 @@ class TelaCadastro extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: CadastroForm(),
+              child: SignupForm(),
             ),
             SizedBox(
               height: 20,
@@ -76,14 +78,14 @@ class TelaCadastro extends StatelessWidget {
   }
 }
 
-class CadastroForm extends StatefulWidget {
-  const CadastroForm({ Key? key }) : super(key: key);
+class SignupForm extends StatefulWidget {
+  const SignupForm({ Key? key }) : super(key: key);
 
   @override
-  State<CadastroForm> createState() => _CadastroFormState();
+  State<SignupForm> createState() => _SignupFormState();
 }
 
-class _CadastroFormState extends State<CadastroForm> {
+class _SignupFormState extends State<SignupForm> {
   bool _escondido = true;
   @override
   Widget build(BuildContext context) {

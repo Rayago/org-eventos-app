@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ResetarForm extends StatelessWidget {
-  const ResetarForm({ Key? key }) : super(key: key);
+class ResetFormPage extends StatelessWidget {
+  const ResetFormPage({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

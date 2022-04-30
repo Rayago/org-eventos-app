@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:org_eventos_app/contOnboard.dart';
-import 'telaLogin.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:org_eventos_app/src/features/auth/presentation/view/login_page.dart';
+import 'cont_onboard.dart';
 
-class Onboard extends StatefulWidget {
-  const Onboard({Key? key}) : super(key: key);
+class OnboardPage extends StatefulWidget {
+  const OnboardPage({Key? key}) : super(key: key);
 
   @override
-  _OnboardState createState() => _OnboardState();
+  _OnboardPageState createState() => _OnboardPageState();
 }
 
-class _OnboardState extends State<Onboard> {
+class _OnboardPageState extends State<OnboardPage> {
   int indexAtual = 0;
   late PageController _controller;
 
@@ -89,12 +90,13 @@ class _OnboardState extends State<Onboard> {
               child: Text(indexAtual == conteudos.length - 1 ? "Continuar" :   "Próximo"),
               onPressed: (){
                 if(indexAtual == conteudos.length - 1){
-                  Navigator.push(
+                  /* Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (_) => const TelaLogin(),
+                      builder: (_) => const LoginPage(),
                     ),
-                  );
+                  ); */
+                  Modular.to.pushNamed('/auth');
                 };
                 _controller.nextPage(
                     duration: const Duration(milliseconds: 100), 
