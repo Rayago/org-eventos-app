@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:org_eventos_app/src/features/auth/presentation/view/login_page.dart';
 import 'cont_onboard.dart';
 
 class OnboardPage extends StatefulWidget {
   const OnboardPage({Key? key}) : super(key: key);
 
   @override
-  _OnboardPageState createState() => _OnboardPageState();
+  State<OnboardPage> createState() => _OnboardPageState();
 }
 
 class _OnboardPageState extends State<OnboardPage> {
   int indexAtual = 0;
   late PageController _controller;
 
+  @override
   void initState(){
     _controller = PageController(initialPage: 0);
     super.initState();
@@ -27,6 +27,7 @@ class _OnboardPageState extends State<OnboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 0, 0, 162),//0000a2
       body: Column(
         children: [
           Expanded(
@@ -47,7 +48,7 @@ class _OnboardPageState extends State<OnboardPage> {
                         conteudos[i].imagem,
                         height: 200,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         conteudos[i].titulo,
                         style: const TextStyle(
@@ -72,14 +73,12 @@ class _OnboardPageState extends State<OnboardPage> {
               },
             ),
           ),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                conteudos.length,
-                (index) => buildDot(index, context)
-                ),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              conteudos.length,
+              (index) => buildDot(index, context)
+              ),
           ),
           Container(
             height: 55,
@@ -96,8 +95,9 @@ class _OnboardPageState extends State<OnboardPage> {
                       builder: (_) => const LoginPage(),
                     ),
                   ); */
-                  Modular.to.pushNamed('/auth');
-                };
+                  //Modular.to.pushNamed('/auth');
+                  Modular.to.navigate('/auth');
+                }
                 _controller.nextPage(
                     duration: const Duration(milliseconds: 100), 
                     curve: Curves.bounceIn

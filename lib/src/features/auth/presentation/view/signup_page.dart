@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:localization/localization.dart';
 
 import 'primary_button.dart';
 
 class SignupPage extends StatelessWidget {
+  const SignupPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,15 +14,15 @@ class SignupPage extends StatelessWidget {
         child: Column( 
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-              SizedBox(
+              const SizedBox(
               height: 70,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
                 'Criar conta',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 22,
                   fontWeight: FontWeight.bold
                 ),
@@ -32,13 +35,13 @@ class SignupPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Row(
                 children: [
-                  Text(
+                  /* const Text(
                     'Já possui Signup?',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
-                  ),
-                  SizedBox(
+                  ), */
+                  const SizedBox(
                     width: 5,
                   ),
                   GestureDetector(
@@ -49,27 +52,27 @@ class SignupPage extends StatelessWidget {
                           Modular.to.pushNamed('/auth/');
                     },
                     child: Text(
-                      'Entrar',
-                      style: TextStyle(
-                        color: Colors.white,
+                      'back'.i18n(),
+                      style: const TextStyle(
+                        color: Colors.black,
                       )
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10,
+             const SizedBox(height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
               child: SignupForm(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: PrimaryButton(textoBt: 'CADASTRAR'),
+              child: PrimaryButton(textoBt: 'signup'.i18n()),
             ),
           ],
         ),
@@ -113,11 +116,11 @@ class _SignupFormState extends State<SignupForm> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15)
         ),
-        color: Colors.white,
-        child: const Text(
-          'CADASTRAR',
-          style: TextStyle(
-            color: Colors.white,
+        color: Colors.black,
+        child: Text(
+          'signup'.i18n(),
+          style: const TextStyle(
+            color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -128,14 +131,14 @@ class _SignupFormState extends State<SignupForm> {
 
   Padding buildInputForm(String dica, bool senha){
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
         obscureText: senha ? _escondido : false ,
         decoration: InputDecoration(
           hintText: dica, 
-          hintStyle: TextStyle(color: Color(0xFFfafafc)),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xFFfafafc)),),
+          hintStyle: const TextStyle(color: Colors.black),
+          focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.black),),
             suffixIcon: senha 
               ? IconButton(
                   onPressed: (){
@@ -144,12 +147,12 @@ class _SignupFormState extends State<SignupForm> {
                     });
                   }, 
                   icon: _escondido 
-                  ? Icon(
+                  ? const Icon(
                       Icons.visibility_off, 
-                      color: Color(0xFFfafafc)) 
-                      :Icon(
+                      color: Colors.black) 
+                      : const Icon(
                         Icons.visibility,
-                        color: Color(0xFFfafafc),
+                        color: Colors.black,
                         ),) 
               : null,
         ),

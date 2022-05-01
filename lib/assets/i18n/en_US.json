@@ -1,0 +1,16 @@
+{
+    "app_name" : "App",
+	
+    "username" : "User",
+    "username_hint": "Type your username",
+    "email_hint": "Type your e-mail",
+    "password": "Password",
+    "password_hint": "Type your password",
+    "login" : "Login",
+    "forgot_password" : "Forgot my password",
+    "signup" : "Sign Up",
+    "keep_connected":"Keep connected",
+    "no_account":"Don't have an account?",
+    "back":"Back",
+    "send":"Send"
+}

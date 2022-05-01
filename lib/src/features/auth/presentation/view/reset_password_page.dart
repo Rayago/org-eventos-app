@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:localization/localization.dart';
 import 'package:org_eventos_app/src/features/auth/presentation/view/primary_button.dart';
 import 'package:org_eventos_app/src/features/auth/presentation/view/reset_form_page.dart';
 
@@ -14,34 +15,34 @@ class ResetPasswordPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 250,
             ),
             Text(
-              'Esqueci minha senha',
-              style: TextStyle(
-                color: Colors.white,
+              'forgot_password'.i18n(),
+              style: const TextStyle(
+                color: Colors.black,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
-              'Por favor, entre com seu e-mail',
-              style: TextStyle(
-                color: Colors.white,
+              'email_hint'.i18n(),
+              style: const TextStyle(
+                color: Colors.black,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             //ResetarForm(),
-            ResetFormPage(),
-            SizedBox(
+            const ResetFormPage(),
+            const SizedBox(
               height: 40,
             ),
             GestureDetector(
@@ -51,11 +52,11 @@ class ResetPasswordPage extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => TelaLogin(),
                     )); */
-                    Modular.to.pushNamed('/');
+                    Modular.to.pushNamed('/auth/');
                 },
-                child: PrimaryButton(textoBt: 'ENVIAR'),
+                child: PrimaryButton(textoBt: 'send'.i18n()),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             GestureDetector(
@@ -65,9 +66,9 @@ class ResetPasswordPage extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => TelaLogin(),
                     )); */
-                    Modular.to.pushNamed('/auth');
+                    Modular.to.pushNamed('/auth/');
                 },
-                child: PrimaryButton(textoBt: 'VOLTAR'),
+                child: PrimaryButton(textoBt: 'back'.i18n()),
             ),
           ],
         )

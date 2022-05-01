@@ -1,0 +1,16 @@
+{
+    "app_name" : "App",
+	
+    "username" : "Usuario",
+    "username_hint": "Digite seu nome de usuario",
+    "email_hint": "Digite seu e-mail",
+    "password": "Senha",
+    "password_hint": "Digite sua senha",
+    "login" : "Entrar",
+    "forgot_password" : "Esqueci minha senha",
+    "signup" : "Cadastrar",
+    "keep_connected":"Manter conectado",
+    "no_account":"Ainda não possui uma conta?",
+    "back":"Voltar",
+    "send":"Enviar"
+}

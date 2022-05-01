@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localization/localization.dart';
 
 class ResetFormPage extends StatelessWidget {
   const ResetFormPage({ Key? key }) : super(key: key);
@@ -6,13 +7,13 @@ class ResetFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
       child: TextFormField(
         decoration: InputDecoration(
-          hintText: 'E-mail',
-          hintStyle: TextStyle(color: Color(0xFFfafafc)),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Color(0xFFfafafc)))),
+          hintText: 'email'.i18n(),
+          hintStyle: const TextStyle(color: Colors.black),
+          focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.black))),
           ),
         );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
+import 'package:localization/localization.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -38,18 +38,18 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           height: 60,
-          child: const TextField(
+          child: TextField(
             keyboardType: TextInputType.emailAddress,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
             decoration: InputDecoration(
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-                prefixIcon: Icon(
+                contentPadding: const EdgeInsets.only(top: 14),
+                prefixIcon: const Icon(
                   Icons.email,
                   color: Color(0xff3f51b5),
                 ),
-                hintText: 'Email',
-                hintStyle: TextStyle(
+                hintText: 'email_hint'.i18n(),
+                hintStyle: const TextStyle(
                   color: Colors.black38,
                 )),
           ),
@@ -62,9 +62,9 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const Text(
-          'Senha',
-          style: TextStyle(
+        Text(
+          'password'.i18n(),
+          style: const TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),
@@ -82,18 +82,18 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           height: 60,
-          child: const TextField(
+          child: TextField(
             obscureText: true,
-            style: TextStyle(color: Colors.black87),
+            style: const TextStyle(color: Colors.black87),
             decoration: InputDecoration(
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-                prefixIcon: Icon(
+                contentPadding: const EdgeInsets.only(top: 14),
+                prefixIcon: const Icon(
                   Icons.lock,
                   color: Color(0xff3f51b5),
                 ),
-                hintText: 'Senha',
-                hintStyle: TextStyle(
+                hintText: 'password_hint'.i18n(),
+                hintStyle: const TextStyle(
                   color: Colors.black38,
                 )),
           ),
@@ -108,14 +108,13 @@ class _LoginPageState extends State<LoginPage> {
       child: TextButton(
         onPressed: () {
           //Navigator.push(context, MaterialPageRoute(builder: (context) => ResetSenhaTela()),),
-          Modular.to.pushNamed('/auth/reset_password');
+          Modular.to.pushNamed('/auth/reset-password');
         },
         style: TextButton.styleFrom(
           padding: const EdgeInsets.only(top: 20),
         ),
-        child: const Text(
-          'Esqueceu a senha?',
-          style: TextStyle(
+        child: Text('forgot_password'.i18n(),
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
@@ -125,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildManterConectado() {
-    return Container(
+    return SizedBox(
       height: 20,
       child: Row(
         children: <Widget>[
@@ -142,9 +141,9 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
           ),
-          const Text(
-            'Manter conectado',
-            style: TextStyle(
+          Text(
+            'keep_connected'.i18n(),
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -165,9 +164,9 @@ class _LoginPageState extends State<LoginPage> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           color: Colors.white,
-          child: const Text(
-            'LOGIN',
-            style: TextStyle(
+          child: Text(
+            'login'.i18n(),
+            style: const TextStyle(
               color: Color(0xff3f51b5),
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -184,19 +183,19 @@ class _LoginPageState extends State<LoginPage> {
         Modular.to.pushNamed('/auth/signup');
       },
       child: RichText(
-        text: const TextSpan(
+        text: TextSpan(
           children: [
             TextSpan(
-              text: 'Ainda não possui uma conta? ',
-              style: TextStyle(
+              text: 'no_account'.i18n(),
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),
             ),
             TextSpan(
-              text: 'Cadastrar',
-              style: TextStyle(
+              text: 'signup'.i18n(),
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
@@ -237,9 +236,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
-                      'Entrar',
-                      style: TextStyle(
+                    Text(
+                      'login'.i18n(),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
