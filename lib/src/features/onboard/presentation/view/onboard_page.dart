@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
 
+// https://pub.dev/packages/flutter_onboard
 class OnboardPage extends StatelessWidget {
   final PageController _pageController = PageController();
 
