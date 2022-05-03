@@ -1,47 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class OnboardPage extends StatefulWidget {
-  const OnboardPage({Key? key}) : super(key: key);
+class OnboardPage2 extends StatefulWidget {
+  const OnboardPage2({Key? key}) : super(key: key);
 
   @override
-  State<OnboardPage> createState() => _OnboardPageState();
+  State<OnboardPage2> createState() => _OnboardPage2State();
 }
 
-class _OnboardPageState extends State<OnboardPage> {
-
+class _OnboardPage2State extends State<OnboardPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF4C00D5), //0000a2
+      backgroundColor: Color(0xFF0000a2), //0000a2
       body: Column(
         children: [
+          Image.asset(
+            "lib/assets/images/interesses.png",
+            height: 250,
+          ),
           Expanded(
             child: Padding(
-                padding: const EdgeInsets.all(40),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      "lib/assets/images/mapa.png",
-                      height: 150,
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: const [
+                  Text(
+                    "Selecione seus interesses",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.white,
                     ),
-                    const Text(
-                      "Bem Vindo!",
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Text("Descubra lugares incriveis em Brasilia",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 23,
-                          color: Colors.white,
-                        )),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +45,7 @@ class _OnboardPageState extends State<OnboardPage> {
                 margin: const EdgeInsets.only(right: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromRGBO(255, 255, 255, 1),
+                  color: Color.fromRGBO(255, 255, 255, 0.4),
                 ),
               ),
               Container(
@@ -61,7 +54,7 @@ class _OnboardPageState extends State<OnboardPage> {
                 margin: const EdgeInsets.only(right: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromRGBO(255, 255, 255, 0.4),
+                  color: Color.fromRGBO(255, 255, 255, 1),
                 ),
               ),
               Container(
@@ -92,7 +85,7 @@ class _OnboardPageState extends State<OnboardPage> {
             child: FlatButton(
               child: const Text("Próximo"),
               onPressed: () {
-                Modular.to.navigate('/ob-2');
+                Modular.to.navigate('/ob-3');
               },
               color: Theme.of(context).primaryColor,
               textColor: Colors.white,

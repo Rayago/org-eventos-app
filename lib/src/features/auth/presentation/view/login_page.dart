@@ -159,7 +159,9 @@ class _LoginPageState extends State<LoginPage> {
       width: double.infinity,
       child: RaisedButton(
           elevation: 5,
-          onPressed: () => print('Botão de login pressionado'),
+          onPressed: (){
+            Modular.to.navigate('/auth/home/');
+          },
           padding: const EdgeInsets.all(15),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -180,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
       onTap: () {
         print("Botão de cadastrar pressionado");
         //Navigator.push(context, MaterialPageRoute(builder: (context) => TelaCadastro(),),);
-        Modular.to.pushNamed('/auth/signup');
+        Modular.to.pushNamed('/auth/signup/');
       },
       child: RichText(
         text: TextSpan(
