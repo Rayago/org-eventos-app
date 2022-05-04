@@ -12,5 +12,16 @@
     "keep_connected":"Keep connected",
     "no_account":"Don't have an account?",
     "back":"Back",
-    "send":"Send"
+    "send":"Send",
+
+    "onboard-title":"Welcome!",
+
+    "onboard-description-1":"Discover amazing places in Brasilia",
+    "onboard-description-2":"Select your interests",
+    "onboard-description-3":"See recommended places for you",
+    "onboard-description-4":"Browse restaurants, sights, parks and more",
+
+    "next":"Next",
+    "enter":"Enter",
+    "data-hint":"Enter your data"
 }

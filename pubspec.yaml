@@ -23,6 +23,9 @@ dependencies:
   flutter_mobx: ^2.0.4
   mask_text_input_formatter: ^2.1.0
   dio: ^4.0.6
+
+  flutter_polyline_points: ^0.2.6
+  google_maps_flutter: ^2.0.2
   
   flutter_onboard: ^2.0.0
 

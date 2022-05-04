@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_onboard/flutter_onboard.dart';
+import 'package:localization/localization.dart';
 
 // https://pub.dev/packages/flutter_onboard
 class OnboardPage extends StatelessWidget {
@@ -72,7 +73,7 @@ class OnboardPage extends StatelessWidget {
                   ), */
                 ),
                 child: Text(
-                  state.isLastPage ? "Entrar" : "Próximo",
+                  state.isLastPage ? "enter".i18n() : "next".i18n(),
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -90,7 +91,7 @@ class OnboardPage extends StatelessWidget {
     if (!onBoardState.isLastPage) {
       _pageController.animateToPage(
         onBoardState.page + 1,
-        duration: const Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOutSine,
       );
     } else {
@@ -101,24 +102,24 @@ class OnboardPage extends StatelessWidget {
 }
 
 final List<OnBoardModel> onBoardData = [
-  const OnBoardModel(
-    title: "Bem Vindo!",
-    description: "Descubra lugares incriveis em Brasilia",
+  OnBoardModel(
+    title: "onboard-title".i18n(),
+    description: "onboard-description-1".i18n(),
     imgUrl: "lib/assets/images/mapa.png",
   ),
-  const OnBoardModel(
+  OnBoardModel(
     title: "",
-    description: "Selecione seus interesses",
+    description: "onboard-description-2".i18n(),
     imgUrl: 'lib/assets/images/interesses.png',
   ),
-  const OnBoardModel(
+  OnBoardModel(
     title: "",
-    description: "Veja locais recomendados pra você",
+    description: "onboard-description-3".i18n(),
     imgUrl: 'lib/assets/images/locais_recomendados.png',
   ),
-  const OnBoardModel(
+  OnBoardModel(
     title: "",
-    description: "Busque por restaurantes, pontos turísticos, etc.",
+    description: "onboard-description-4".i18n(),
     imgUrl: 'lib/assets/images/pontos_turisticos.png',
   ),
 ];

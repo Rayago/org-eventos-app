@@ -182,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
       onTap: () {
         print("Botão de cadastrar pressionado");
         //Navigator.push(context, MaterialPageRoute(builder: (context) => TelaCadastro(),),);
-        Modular.to.pushNamed('/auth/signup/');
+        Modular.to.pushNamed('/auth/signup');
       },
       child: RichText(
         text: TextSpan(

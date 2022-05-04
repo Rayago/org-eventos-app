@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class PrimaryButton extends StatelessWidget {
-  
 
   final String textoBt;
   const PrimaryButton({Key? key, required this.textoBt}) : super(key: key);
@@ -14,7 +13,7 @@ class PrimaryButton extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16), color: Color(0xff3f51b5),),
+        borderRadius: BorderRadius.circular(16), color: Color(0xff0000a2),),
         child: RaisedButton(
         elevation: 5,
         onPressed: (){ 
@@ -28,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15)
         ),
-        color: const Color(0xff3f51b5),
+        color: const Color(0xff0000a2),
         child: Text(
           textoBt,
           style: const TextStyle(

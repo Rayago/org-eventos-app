@@ -14,8 +14,8 @@ class AuthModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (_, __) => const LoginPage()),
         ChildRoute('/signup', child: (_, __) => const SignupPage()),
-        ChildRoute('/reset-form', child: (_, __) =>const ResetFormPage()),
         ChildRoute('/reset-password', child: (_, __) => const ResetPasswordPage()),
+        ChildRoute('/reset-form', child: (_, __) => const ResetFormPage()),
         ModuleRoute('/home/', module: HomeModule())
       ];
 }
