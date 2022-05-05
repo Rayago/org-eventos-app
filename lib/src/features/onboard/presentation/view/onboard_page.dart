@@ -48,7 +48,7 @@ class OnboardPage extends StatelessWidget {
           },
           child: const Text(
             "Entrar",
-            style: TextStyle(color: Color(0xffFFD54F)),
+            style: TextStyle(color: Color.fromRGBO(255, 213, 79, 1)),
           ),
         ),
         // Either Provide onDone Callback or nextButton Widget to handle done state

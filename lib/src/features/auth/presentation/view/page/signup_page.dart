@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
-import 'package:org_eventos_app/src/features/auth/presentation/view/custom_button.dart';
+import 'package:org_eventos_app/src/features/auth/presentation/view/widget/custom_button.dart';
 
-import 'primary_button.dart';
+import '../widget/primary_button.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);

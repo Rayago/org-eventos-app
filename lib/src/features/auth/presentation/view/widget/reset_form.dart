@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
-import 'package:org_eventos_app/src/features/auth/presentation/view/custom_button.dart';
-import 'package:org_eventos_app/src/features/auth/presentation/view/primary_button.dart';
 
-class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({Key? key}) : super(key: key);
+import 'primary_button.dart';
+
+class ResetForm extends StatelessWidget {
+  const ResetForm({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,16 +57,30 @@ class ResetPasswordPage extends StatelessWidget {
                 height: 40,
               ),
               GestureDetector(
-                //child: PrimaryButton(textoBt: 'send'.i18n()),
-                child: const CustomButton(
-                  text: 'Entrar',
-                  where: '/auth/',
-                ),
+                onTap: () {
+                  /* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TelaLogin(),
+                    )); */
+                  Modular.to.pushNamed('/auth/');
+                },
+                child: PrimaryButton(textoBt: 'send'.i18n()),
               ),
               const SizedBox(
                 height: 40,
               ),
-              CustomButton(text: 'back'.i18n(), where: '/auth/'),
+              GestureDetector(
+                onTap: () {
+                  /* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TelaLogin(),
+                    )); */
+                  Modular.to.pushNamed('/auth/');
+                },
+                child: PrimaryButton(textoBt: 'back'.i18n()),
+              ),
             ],
           )),
     );

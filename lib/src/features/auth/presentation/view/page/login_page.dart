@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
+import 'package:org_eventos_app/src/features/auth/presentation/viewmodel/login_viewmodel.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -11,7 +13,7 @@ class LoginPage extends StatefulWidget {
   }
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
   bool manterConectado = false;
 
   Widget buildEmail() {
@@ -42,16 +44,22 @@ class _LoginPageState extends State<LoginPage> {
             keyboardType: TextInputType.emailAddress,
             style: const TextStyle(color: Colors.black87),
             decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.only(top: 14),
-                prefixIcon: const Icon(
-                  Icons.email,
-                  color: Color(0xff3f51b5),
-                ),
-                hintText: 'email_hint'.i18n(),
-                hintStyle: const TextStyle(
-                  color: Colors.black38,
-                )),
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.only(top: 14),
+              prefixIcon: const Icon(
+                Icons.email,
+                color: Color(0xff3f51b5),
+              ),
+              hintText: 'email_hint'.i18n(),
+              hintStyle: const TextStyle(
+                color: Colors.black38,
+              ),
+              ////////
+              errorText: store.error.email,
+            ),
+            onChanged: (value) {
+              store.email = value;
+            },
           ),
         ),
       ],
@@ -86,16 +94,21 @@ class _LoginPageState extends State<LoginPage> {
             obscureText: true,
             style: const TextStyle(color: Colors.black87),
             decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.only(top: 14),
-                prefixIcon: const Icon(
-                  Icons.lock,
-                  color: Color(0xff3f51b5),
-                ),
-                hintText: 'password_hint'.i18n(),
-                hintStyle: const TextStyle(
-                  color: Colors.black38,
-                )),
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.only(top: 14),
+              prefixIcon: const Icon(
+                Icons.lock,
+                color: Color(0xff3f51b5),
+              ),
+              hintText: 'password_hint'.i18n(),
+              hintStyle: const TextStyle(
+                color: Colors.black38,
+              ),
+              errorText: store.error.password,
+            ),
+            onChanged: (value) {
+              store.email = value;
+            },
           ),
         ),
       ],
@@ -113,7 +126,8 @@ class _LoginPageState extends State<LoginPage> {
         style: TextButton.styleFrom(
           padding: const EdgeInsets.only(top: 20),
         ),
-        child: Text('forgot_password'.i18n(),
+        child: Text(
+          'forgot_password'.i18n(),
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -158,22 +172,27 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: RaisedButton(
-          elevation: 5,
-          onPressed: (){
+        elevation: 5,
+        onPressed: () {
+          /* if (store.login() == true) {
             Modular.to.navigate('/auth/home/');
-          },
-          padding: const EdgeInsets.all(15),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          color: Colors.white,
-          child: Text(
-            'login'.i18n(),
-            style: const TextStyle(
-              color: Color(0xff3f51b5),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          )),
+          }else{
+            print('erro');
+          } */
+          Modular.to.navigate('/auth/home/');
+        },
+        padding: const EdgeInsets.all(15),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        color: Colors.white,
+        child: Text(
+          'login'.i18n(),
+          style: const TextStyle(
+            color: Color(0xff3f51b5),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 

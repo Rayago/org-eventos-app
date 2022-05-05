@@ -9,54 +9,78 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    //LoginPage(), //exemplo
+    Text(
+      'Index 1: search',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: maps',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Settings',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text('titulo'),
+        backgroundColor: const Color.fromRGBO(0, 0, 162, 1),
+        title: const Text('Home Page'),
         leading: IconButton(
-          icon: Icon(Icons.keyboard_backspace),
+          icon: const Icon(Icons.keyboard_backspace),
           onPressed: () {
             Modular.to.navigate('/auth/');
           },
         ),
       ),
-      /* body: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text('texto'),
-          ],
-        ),
-      ), */
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
-        items: const [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.filter_1),
-            label: "Red",
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.filter_2),
-            label: "Green",
+            icon: Icon(Icons.search),
+            label: 'Search',
+            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.filter_3),
-            label: "Blue",
+            icon: Icon(Icons.location_on),
+            label: 'Maps',
+            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color.fromRGBO(255, 213, 79, 1),
+        onTap: _onItemTapped,
       ),
     );
   }
 }
-
-      /* floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Modular.to.navigate('/auth/');
-        },
-        backgroundColor: Colors.blue,
-        child: const Icon(Icons.keyboard_backspace),
-        ) */
