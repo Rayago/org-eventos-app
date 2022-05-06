@@ -55,19 +55,22 @@ class SignupPage extends StatelessWidget {
                 ],
               ),
             ), */
-            
+
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: SignupForm(),
             ),
-
             const SizedBox(
               height: 20,
             ),
-            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: CustomButton(text: 'signup'.i18n(), where: '/auth/',),
+              child: CustomButton(
+                text: 'signup'.i18n(),
+                where: '/auth/',
+                color: Color.fromRGBO(0, 0, 162, 1),
+                textColor: Colors.white,
+              ),
             ),
           ],
         ),

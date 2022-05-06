@@ -15,6 +15,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
   bool manterConectado = false;
+  String? email = '';
+  String? password = '';
 
   Widget buildEmail() {
     return Column(
@@ -58,7 +60,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
               errorText: store.error.email,
             ),
             onChanged: (value) {
-              store.email = value;
+              email = value;
             },
           ),
         ),
@@ -107,7 +109,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
               errorText: store.error.password,
             ),
             onChanged: (value) {
-              store.email = value;
+              password = value;
             },
           ),
         ),
@@ -121,7 +123,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
       child: TextButton(
         onPressed: () {
           //Navigator.push(context, MaterialPageRoute(builder: (context) => ResetSenhaTela()),),
-          Modular.to.pushNamed('/auth/reset-password');
+          Modular.to.pushNamed('/auth/verification-code');
         },
         style: TextButton.styleFrom(
           padding: const EdgeInsets.only(top: 20),
@@ -137,7 +139,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
     );
   }
 
-  Widget buildManterConectado() {
+  /* Widget buildManterConectado() {
     return SizedBox(
       height: 20,
       child: Row(
@@ -165,7 +167,37 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
         ],
       ),
     );
-  }
+  } */
+
+  Widget get _button => InkWell(
+        onTap: () {
+          if (email != null && password != null) {
+            if (store.login(email!, password!)) {
+              Modular.to.pushNamed('/auth/home/');
+            }
+          }
+        },
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.white,
+            ),
+            child: Text(
+              'login'.i18n(),
+              style: const TextStyle(
+                color: const Color.fromARGB(255, 0, 0, 162),
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ),
+      );
 
   Widget buildLoginBt() {
     return Container(
@@ -174,12 +206,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
       child: RaisedButton(
         elevation: 5,
         onPressed: () {
-          /* if (store.login() == true) {
-            Modular.to.navigate('/auth/home/');
-          }else{
-            print('erro');
-          } */
-          Modular.to.navigate('/auth/home/');
+          if (store.login(email!, password!)) {
+            Modular.to.navigate('/home/');
+          }
         },
         padding: const EdgeInsets.all(15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
@@ -270,8 +299,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
                     const SizedBox(height: 20),
                     buildSenha(),
                     buildEsqueciSenhaBt(),
-                    buildManterConectado(),
-                    buildLoginBt(),
+                    //buildManterConectado(),
+                    //buildLoginBt(),
+                    _button,
                     buildCadastrarBt(),
                   ],
                 ),

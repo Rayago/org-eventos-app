@@ -4,8 +4,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final String where;
-  const CustomButton({Key? key, required this.text, required this.where})
+  CustomButton({Key? key, required this.text, required this.where, Color? this.color, Color? this.textColor})
       : super(key: key);
+
+  Color? color = Color.fromARGB(255, 0, 0, 162);
+  Color? textColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +21,13 @@ class CustomButton extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 3),
           borderRadius: BorderRadius.circular(30),
-          color: const Color.fromARGB(255, 0, 0, 162),
+          color: color,
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: textColor,
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),

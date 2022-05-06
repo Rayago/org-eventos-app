@@ -29,7 +29,7 @@ class LoginViewModel with Store {
     error.password = _usecase.validatePassword(password);
   }
 
-  Future<bool> login() async {
+  bool login(String email, String password) {
     return true;
   }
 }
@@ -41,11 +41,15 @@ class LoginError with Store {
   @observable
   String? password;
 
+  @observable
+  String? login;
+
   @computed
-  bool get hasErrors => email != null || password != null;
+  bool get hasErrors => email != null || password != null || login != null;
 
   void clear() {
     email = null;
     password = null;
+    login = null;
   }
 }
