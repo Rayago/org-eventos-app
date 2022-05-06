@@ -38,6 +38,8 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Color background_color = Color.fromRGBO(0, 0, 162, 1);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,26 +57,29 @@ class _HomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home_outlined),
             label: 'Home',
-            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
+            backgroundColor: background_color,
+            activeIcon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
-            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
+            backgroundColor: background_color,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
+            icon: Icon(Icons.location_on_outlined),
             label: 'Maps',
-            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
+            backgroundColor: background_color,
+            activeIcon: Icon(Icons.location_on),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.settings_outlined),
             label: 'Settings',
-            backgroundColor: Color.fromRGBO(0, 0, 162, 1),
+            backgroundColor: background_color,
+            activeIcon: Icon(Icons.settings),
           ),
         ],
         currentIndex: _selectedIndex,

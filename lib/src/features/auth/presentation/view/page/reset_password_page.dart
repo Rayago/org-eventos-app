@@ -57,7 +57,7 @@ class ResetPasswordPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   CustomButton(
-                    text: 'Enviar',
+                    text: 'Redefinir',
                     where: '/auth/',
                     color: Color.fromRGBO(255, 213, 79, 1),
                     textColor: Colors.black,
