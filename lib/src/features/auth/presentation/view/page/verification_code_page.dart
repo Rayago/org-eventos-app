@@ -25,72 +25,58 @@ class VerificationCodePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Center(
-              child: Text(
-                'Insira seu e-mail e enviaremos um código de verificaçao para ele',
-                style: const TextStyle(
-                  color: Color.fromRGBO(0, 0, 162, 1),
-                  fontSize: 18,
-                  fontWeight: FontWeight.w900,
-                ),
+            Text(
+              'Insira seu e-mail e enviaremos um código de verificaçao para ele'
+                  .i18n(),
+              style: const TextStyle(
+                color: Color.fromRGBO(0, 0, 162, 1),
+                fontSize: 18,
+                fontWeight: FontWeight.w900,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Email'.i18n(),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Email'.i18n(),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Email'.i18n(),
-                    hintStyle: const TextStyle(color: Colors.black),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                CustomButton(
-                  text: 'Enviar',
-                  where: '/auth/verification-code',
-                  color: Color.fromARGB(255, 0, 0, 162),
-                  textColor: Colors.white,
-                ),
-              ],
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email'.i18n(),
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.email),
+              ),
             ),
-            Column(
-              children: [
-                Text(
-                  'Codigo de verificacao',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'codigo de verificacao',
-                    hintStyle: const TextStyle(color: Colors.black),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                CustomButton(
-                  text: 'Verificar',
-                  where: '/auth/reset-password',
-                  color: Color.fromRGBO(255, 213, 79, 1),
-                ),
-              ],
-            )
+            CustomButton(
+              text: 'Enviar',
+              where: '/auth/verification-code',
+              color: Color.fromARGB(255, 0, 0, 162),
+              textColor: Colors.white,
+            ),
+            Text(
+              'Codigo de verificacao',
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'password'.i18n(),
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.lock)
+              ),
+            ),
+            CustomButton(
+              text: 'Verificar',
+              where: '/auth/reset-password',
+              color: Color.fromRGBO(255, 213, 79, 1),
+            ),
           ],
         ),
       ),

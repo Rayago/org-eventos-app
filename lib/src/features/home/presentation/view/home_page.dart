@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:org_eventos_app/src/features/home/presentation/view/place_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,17 +13,32 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
+  static final List<Widget> _widgetOptions = <Widget>[
+    /* Text(
       'Index 0: Home',
       style: optionStyle,
+    ), */
+    Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: ListView(
+        children: [
+          PlaceWidget(name: 'name 1', des: 'description 1'),
+          PlaceWidget(name: 'name 2', des: 'description 2'),
+          PlaceWidget(name: 'name 3', des: 'description 3'),
+          PlaceWidget(name: 'name 4', des: 'description 4'),
+          PlaceWidget(name: 'name 5', des: 'description 5'),
+          PlaceWidget(name: 'name 6', des: 'description 6'),
+          PlaceWidget(name: 'name 7', des: 'description 7'),
+          PlaceWidget(name: 'name 8', des: 'description 8'),
+          PlaceWidget(name: 'name 9', des: 'description 9'),
+          ],
+      ),
     ),
-    //LoginPage(), //exemplo
     Text(
       'Index 1: search',
       style: optionStyle,
     ),
-    Text(
+    const Text(
       'Index 2: maps',
       style: optionStyle,
     ),

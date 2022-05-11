@@ -46,7 +46,7 @@ class ResetPasswordPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  TextFormField(
+                  /* TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Confirme sua senha'.i18n(),
                       hintStyle: const TextStyle(color: Colors.black),
@@ -54,7 +54,17 @@ class ResetPasswordPage extends StatelessWidget {
                         borderSide: BorderSide(color: Colors.black),
                       ),
                     ),
+                  ), */
+
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border:const OutlineInputBorder(),
+                      labelText: 'password'.i18n(),
+                      prefixIcon: const Icon(Icons.lock),
+                    ),
                   ),
+                  
                   SizedBox(height: 20),
                   CustomButton(
                     text: 'Redefinir',

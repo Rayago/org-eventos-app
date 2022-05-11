@@ -239,7 +239,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
               text: 'no_account'.i18n(),
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 18,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -259,7 +259,48 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0x663f51b5),
+              Color(0x993f51b5),
+              Color(0xcc3f51b5),
+              Color(0xff3f51b5),
+              Color(0xff00000a2),
+            ],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'login'.i18n(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              buildEmail(),
+              SizedBox(height: 20),
+              buildSenha(),
+              buildEsqueciSenhaBt(),
+              _button,
+              buildCadastrarBt(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/* AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: GestureDetector(
           child: Stack(children: <Widget>[
@@ -294,9 +335,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 50),
+                    //const SizedBox(height: 50),
                     buildEmail(),
-                    const SizedBox(height: 20),
+                    //const SizedBox(height: 20),
                     buildSenha(),
                     buildEsqueciSenhaBt(),
                     //buildManterConectado(),
@@ -309,7 +350,4 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
             ),
           ]),
         ),
-      ),
-    );
-  }
-}
+      ), */
