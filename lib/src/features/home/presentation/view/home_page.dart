@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:org_eventos_app/src/features/home/presentation/view/map_page.dart';
 import 'package:org_eventos_app/src/features/home/presentation/view/place_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,10 +39,7 @@ class _HomePageState extends State<HomePage> {
       'Index 1: search',
       style: optionStyle,
     ),
-    const Text(
-      'Index 2: maps',
-      style: optionStyle,
-    ),
+      MapSample(),
     Text(
       'Index 3: Settings',
       style: optionStyle,
