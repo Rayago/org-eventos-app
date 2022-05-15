@@ -92,12 +92,12 @@ class _SignupFormState extends State<SignupForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildInputForm('Nome', false),
-        buildInputForm('Sobrenome', false),
+        buildInputForm('name'.i18n(), false),
+        buildInputForm('surname'.i18n(), false),
         buildInputForm('Telefone', false),
         buildInputForm('Email', false),
-        buildInputForm('Senha', true),
-        buildInputForm('Confirme a senha', true),
+        buildInputForm('password'.i18n(), true),
+        buildInputForm('confirm_password'.i18n(), true),
       ],
     );
   }

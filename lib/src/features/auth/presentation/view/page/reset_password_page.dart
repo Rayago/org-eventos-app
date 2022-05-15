@@ -16,7 +16,7 @@ class ResetPasswordPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.keyboard_backspace),
           onPressed: () {
-            Modular.to.navigate('/auth/verification-code');
+            Modular.to.navigate('/auth/verify');
           },
         ),
       ),
@@ -67,7 +67,7 @@ class ResetPasswordPage extends StatelessWidget {
                   
                   SizedBox(height: 20),
                   CustomButton(
-                    text: 'Redefinir',
+                    text: 'reset_password'.i18n(),
                     where: '/auth/',
                     color: Color.fromRGBO(255, 213, 79, 1),
                     textColor: Colors.black,

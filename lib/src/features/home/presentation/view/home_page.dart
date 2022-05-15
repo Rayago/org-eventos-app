@@ -32,14 +32,14 @@ class _HomePageState extends State<HomePage> {
           PlaceWidget(name: 'name 7', des: 'description 7'),
           PlaceWidget(name: 'name 8', des: 'description 8'),
           PlaceWidget(name: 'name 9', des: 'description 9'),
-          ],
+        ],
       ),
     ),
     Text(
       'Index 1: search',
       style: optionStyle,
     ),
-      MapSample(),
+    MapSample(),
     Text(
       'Index 3: Settings',
       style: optionStyle,

@@ -5,6 +5,7 @@
     "username_hint": "Type your username",
     "email_hint": "Type your e-mail",
     "password": "Password",
+    "confirm_password": "Confirm your password",
     "password_hint": "Type your password",
     "login" : "Login",
     "forgot_password" : "Forgot my password",
@@ -13,6 +14,9 @@
     "no_account":"Don't have an account?",
     "back":"Back",
     "send":"Send",
+    "verify":"Verify",
+    "verification_code":"Verification code",
+
 
     "onboard-title":"Welcome!",
 
@@ -23,5 +27,10 @@
 
     "next":"Next",
     "enter":"Enter",
-    "data-hint":"Enter your data"
+    "data-hint":"Enter your data",
+
+    "verification_hint":"Enter your email and we'll send you a verification code",
+    "reset_password":"Reset password",
+    "surname":"Surname",
+    "name":"Name"
 }

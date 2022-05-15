@@ -123,7 +123,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
       child: TextButton(
         onPressed: () {
           //Navigator.push(context, MaterialPageRoute(builder: (context) => ResetSenhaTela()),),
-          Modular.to.pushNamed('/auth/verification-code');
+          Modular.to.pushNamed('/auth/verify');
         },
         style: TextButton.styleFrom(
           padding: const EdgeInsets.only(top: 20),

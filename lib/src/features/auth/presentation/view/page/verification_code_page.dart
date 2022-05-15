@@ -12,7 +12,7 @@ class VerificationCodePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(0, 0, 162, 1),
-        title: const Text('Redefinir senha'),
+        title: Text('reset_password'.i18n()),
         leading: IconButton(
           icon: const Icon(Icons.keyboard_backspace),
           onPressed: () {
@@ -26,8 +26,7 @@ class VerificationCodePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Insira seu e-mail e enviaremos um código de verificaçao para ele'
-                  .i18n(),
+              'verification_hint'.i18n(),
               style: const TextStyle(
                 color: Color.fromRGBO(0, 0, 162, 1),
                 fontSize: 18,
@@ -51,13 +50,13 @@ class VerificationCodePage extends StatelessWidget {
               ),
             ),
             CustomButton(
-              text: 'Enviar',
-              where: '/auth/verification-code',
+              text: 'send'.i18n(),
+              where: '/auth/verify',
               color: Color.fromARGB(255, 0, 0, 162),
               textColor: Colors.white,
             ),
             Text(
-              'Codigo de verificacao',
+              'verification_code'.i18n(),
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 18,
@@ -65,16 +64,16 @@ class VerificationCodePage extends StatelessWidget {
               ),
             ),
             TextField(
-              obscureText: true,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'password'.i18n(),
+                labelText: 'verification_code'.i18n(),
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock)
               ),
             ),
             CustomButton(
-              text: 'Verificar',
-              where: '/auth/reset-password',
+              text: 'verify'.i18n(),
+              where: '/auth/reset',
               color: Color.fromRGBO(255, 213, 79, 1),
             ),
           ],
