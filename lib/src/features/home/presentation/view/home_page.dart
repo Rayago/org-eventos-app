@@ -67,6 +67,14 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Modular.to.navigate('/auth/home/chat');
+        },
+        child: const Icon(Icons.chat),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
