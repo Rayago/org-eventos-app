@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:localization/localization.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -16,6 +17,23 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //botao para enviar mensagens pelo bot
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (messageController.text.isEmpty) {
+            print('vazia');
+          } else {
+            setState(() {
+              //messages.insert(0, {"id": 1, "message": messageController.text});
+              messages.add({"message": messageController.text, "id": 1});
+            });
+            //response(messageController.text);
+            messageController.clear();
+          }
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
+      //botao para enviar mensagens pelo bot
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(0, 0, 162, 1),
         title: const Text('Chat'),
@@ -29,6 +47,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Container(
         child: Column(
           children: [
+            SizedBox(height: 20),
             Flexible(
               child: ListView.builder(
                 reverse: false,
@@ -45,17 +64,19 @@ class _ChatPageState extends State<ChatPage> {
             Container(
               child: ListTile(
                 title: Container(
-                  padding: EdgeInsets.only(left: 10, bottom: 5),
+                  padding: EdgeInsets.only(left: 10, bottom: 3),
                   decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                    color: Color.fromRGBO(220, 220, 220, 1),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(25),
+                    ),
+                    color: Color.fromRGBO(54, 54, 62, 0.5),
                   ),
                   child: TextFormField(
                     controller: messageController,
                     decoration: const InputDecoration(
-                      hintText: 'Escreva sua mensagem',
+                      hintText: 'Mensagem',
                       hintStyle: TextStyle(
-                        color: Colors.black26,
+                        color: Color.fromRGBO(255, 255, 255, 0.5),
                       ),
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -65,7 +86,8 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.black,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
@@ -87,10 +109,10 @@ class _ChatPageState extends State<ChatPage> {
                       //response(messageController.text);
                       messageController.clear();
                     }
-                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    /* FocusScopeNode currentFocus = FocusScope.of(context);
                     if (!currentFocus.hasPrimaryFocus) {
                       currentFocus.unfocus();
-                    }
+                    } */
                   },
                 ),
               ),
@@ -101,7 +123,64 @@ class _ChatPageState extends State<ChatPage> {
     );
   }
 
+  BorderRadius borderLeft = BorderRadius.only(
+      topLeft: Radius.circular(15),
+      topRight: Radius.circular(15),
+      bottomRight: Radius.circular(15));
+
+  BorderRadius borderRight = BorderRadius.only(
+      topLeft: Radius.circular(15),
+      topRight: Radius.circular(15),
+      bottomLeft: Radius.circular(15));
+
+  TextStyle styleText =
+      TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600);
+
   Widget chat(String message, int id) {
-    return Container();
+    return Padding(
+      padding: id == 1
+          ? EdgeInsets.fromLTRB(10, 5, 80, 5)
+          : EdgeInsets.fromLTRB(80, 5, 10, 5),
+      child: id == 1
+          ? Wrap(
+              alignment: WrapAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                    top: 5,
+                    bottom: 5,
+                  ),
+                  child: Text(message, style: styleText),
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(76, 0, 213, 0.5),
+                    borderRadius: borderLeft,
+                  ),
+                )
+              ],
+            )
+          : Wrap(
+              alignment: WrapAlignment.end,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                    top: 5,
+                    bottom: 5,
+                  ),
+                  child: Text(
+                    message,
+                    style: styleText,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(76, 0, 213, 1),
+                    borderRadius: borderRight,
+                  ),
+                )
+              ],
+            ),
+    );
   }
 }
