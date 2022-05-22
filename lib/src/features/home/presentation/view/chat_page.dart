@@ -11,6 +11,7 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   final messageController = TextEditingController();
+  ScrollController scrollController = ScrollController();
 
   List<Map> messages = [];
 
@@ -44,93 +45,83 @@ class _ChatPageState extends State<ChatPage> {
           },
         ),
       ),
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            Flexible(
-              child: ListView.builder(
-                reverse: false,
-                itemCount: messages.length,
-                itemBuilder: (context, index) => chat(
-                    messages[index]["message"].toString(),
-                    messages[index]["id"]),
-              ),
-            ),
-            const Divider(
-              height: 5,
-              color: Color.fromRGBO(0, 0, 162, 1),
-            ),
-            Container(
-              child: ListTile(
-                title: Container(
-                  padding: EdgeInsets.only(left: 10, bottom: 3),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(25),
+      backgroundColor: Color.fromRGBO(200, 200, 200, 1),
+      body: Stack(
+        children: [
+          ListView.builder(
+            padding: EdgeInsets.only(bottom: 60),
+            reverse: false,
+            itemCount: messages.length,
+            itemBuilder: (context, index) => chat(
+                messages[index]["message"].toString(), messages[index]["id"]),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Row(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width - 55,
+                  child: Card(
+                    margin: EdgeInsets.only(
+                      left: 8,
+                      right: 2,
+                      bottom: 8,
                     ),
-                    color: Color.fromRGBO(54, 54, 62, 0.5),
-                  ),
-                  child: TextFormField(
-                    controller: messageController,
-                    decoration: const InputDecoration(
-                      hintText: 'Mensagem',
-                      hintStyle: TextStyle(
-                        color: Color.fromRGBO(255, 255, 255, 0.5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: TextFormField(
+                      controller: messageController,
+                      textAlignVertical: TextAlignVertical.center,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 4,
+                      minLines: 1,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Mensagem',
+                        contentPadding: EdgeInsets.fromLTRB(20, 10, 10, 15),
                       ),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none,
-                    ),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
-                trailing: IconButton(
-                  icon: Icon(
-                    Icons.send_rounded,
-                    size: 30,
-                    color: Color.fromRGBO(0, 0, 162, 1),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(5, 0, 0, 8),
+                  child: CircleAvatar(
+                    radius: 20,
+                    child: IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: () {
+                        if (messageController.text.isEmpty) {
+                          print('vazia');
+                        } else {
+                          setState(() {
+                            //messages.insert(0, {"id": 1, "message": messageController.text});
+                            messages.add(
+                                {"message": messageController.text, "id": 0});
+                          });
+                          //response(messageController.text);
+                          messageController.clear();
+                        }
+                      },
+                    ),
                   ),
-                  onPressed: () {
-                    if (messageController.text.isEmpty) {
-                      print('vazia');
-                    } else {
-                      setState(() {
-                        //messages.insert(0, {"id": 1, "message": messageController.text});
-                        messages
-                            .add({"message": messageController.text, "id": 0});
-                      });
-                      //response(messageController.text);
-                      messageController.clear();
-                    }
-                    /* FocusScopeNode currentFocus = FocusScope.of(context);
-                    if (!currentFocus.hasPrimaryFocus) {
-                      currentFocus.unfocus();
-                    } */
-                  },
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  BorderRadius borderLeft = BorderRadius.only(
+  BorderRadius borderLeft = const BorderRadius.only(
       topLeft: Radius.circular(15),
       topRight: Radius.circular(15),
       bottomRight: Radius.circular(15));
 
-  BorderRadius borderRight = BorderRadius.only(
+  BorderRadius borderRight = const BorderRadius.only(
       topLeft: Radius.circular(15),
-      topRight: Radius.circular(15),
+      bottomRight: Radius.circular(15),
       bottomLeft: Radius.circular(15));
 
   TextStyle styleText =
@@ -154,7 +145,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   child: Text(message, style: styleText),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(76, 0, 213, 0.5),
+                    color: Color.fromRGBO(38, 38, 38, 0.7),
                     borderRadius: borderLeft,
                   ),
                 )
@@ -175,7 +166,18 @@ class _ChatPageState extends State<ChatPage> {
                     style: styleText,
                   ),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(76, 0, 213, 1),
+                    gradient: const LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: [
+                        Color.fromRGBO(76, 0, 213, 1),
+                        Color.fromRGBO(0, 0, 162, 1),
+                        /* Color.fromRGBO(255, 201, 4, 1),
+                        Color.fromRGBO(255, 35, 93, 1),
+                        Color.fromRGBO(211, 0, 213, 1), */
+                      ],
+                    ),
+                    //color: Color.fromRGBO(76, 0, 213, 1),
                     borderRadius: borderRight,
                   ),
                 )
