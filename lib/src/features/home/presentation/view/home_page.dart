@@ -11,7 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   int _selectedIndex = 0;
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
@@ -19,26 +21,8 @@ class _HomePageState extends State<HomePage> {
       'Index 0: Home',
       style: optionStyle,
     ), */
-    Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: ListView(
-        children: [
-          PlaceWidget(name: 'name 1', des: 'description 1'),
-          PlaceWidget(name: 'name 2', des: 'description 2'),
-          PlaceWidget(name: 'name 3', des: 'description 3'),
-          PlaceWidget(name: 'name 4', des: 'description 4'),
-          PlaceWidget(name: 'name 5', des: 'description 5'),
-          PlaceWidget(name: 'name 6', des: 'description 6'),
-          PlaceWidget(name: 'name 7', des: 'description 7'),
-          PlaceWidget(name: 'name 8', des: 'description 8'),
-          PlaceWidget(name: 'name 9', des: 'description 9'),
-        ],
-      ),
-    ),
-    Text(
-      'Index 1: search',
-      style: optionStyle,
-    ),
+    const Text('index: 0'),
+    PlaceWidget(),
     MapSample(),
     Text(
       'Index 3: Settings',
@@ -74,7 +58,6 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.chat),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-      
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
