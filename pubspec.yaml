@@ -28,6 +28,8 @@ dependencies:
   
   flutter_onboard: ^2.0.0
   google_maps_flutter: ^2.1.5
+  flutter_secure_storage: ^5.0.2
+  http: ^0.13.0+4
 
 dev_dependencies:
   flutter_test:
