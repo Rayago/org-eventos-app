@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:org_eventos_app/src/features/home/presentation/view/home_page.dart';
 import 'package:org_eventos_app/main.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
@@ -9,52 +8,55 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:convert' show json, base64, ascii;
 
-final TextEditingController _usernameController = TextEditingController();
-final TextEditingController _passwordController = TextEditingController();
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() {
     return _LoginPageState();
   }
-}
 
-void displayDialog(BuildContext context, String title, String text) => 
-  showDialog(
-    context: context,
-    builder: (context) =>
-      AlertDialog(
-        title: Text(title),
-        content: Text(text)
-      ),
-  );
+  Future<String> get jwtOrEmpty async {
+    var jwt = await storage.read(key: "jwt");
+    if(jwt == null) return "";
+    return jwt;
+  }
 
-Future<String?> attemptLogIn(String username, String password) async {
-  var url = Uri.parse("$SERVER_IP/login");
-  var res = await http.post(
-    url,
-    body: {
-      "username": username,
-      "password": password
+  void displayDialog(BuildContext context, String title, String text) => 
+    showDialog(
+      context: context,
+      builder: (context) =>
+        AlertDialog(
+          title: Text(title),
+          content: Text(text)
+        ),
+    );
+
+    Future<String?> attemptLogIn(String username, String password) async {
+      var url = Uri.parse("$SERVER_IP/login");
+      var res = await http.post(
+        url,
+        body: {
+          "username": username,
+          "password": password
+        }
+      );
+      if(res.statusCode == 200) return res.body;
+      return null;
     }
-  );
-  if(res.statusCode == 200) return res.body;
-  return null;
-}
 
-Future<int> attemptSignUp(String username, String password) async {
-  var url = Uri.parse("$SERVER_IP/signup");
-  var res = await http.post(
-    url,
-    body: {
-      "username": username,
-      "password": password
+    Future<int> attemptSignUp(String username, String password) async {
+      var url = Uri.parse("$SERVER_IP/signup");
+      var res = await http.post(
+        url,
+        body: {
+          "username": username,
+          "password": password
+        }
+      );
+      return res.statusCode;  
     }
-  );
-  return res.statusCode;  
 }
-
 
 class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
   bool manterConectado = false;
@@ -65,11 +67,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        TextField(
-          controller: _usernameController,
-          decoration: InputDecoration(
-                labelText: 'Email'
-              ),
+        const Text(
+          'Email',
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -118,12 +117,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        TextField(
-           controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: 'password'.i18n(),
-              ),
+        Text(
+          'password'.i18n(),
           style: const TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -250,11 +245,11 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
       );
 
   Widget buildLoginBt() {
-    /*
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
-      child: FlatButton(
+      child: RaisedButton(
+        elevation: 5,
         onPressed: () {
           if (store.login(email!, password!)) {
             Modular.to.navigate('/home/');
@@ -273,28 +268,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
         ),
       ),
     );
-    */
-
-    // ignore: dead_code
-    return FlatButton(
-              onPressed: () async {
-                var username = _usernameController.text;
-                var password = _passwordController.text;
-                var jwt = await attemptLogIn(username, password);
-                if(jwt != null) {
-                  storage.write(key: "jwt", value: jwt);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => HomePage.fromBase64(jwt)
-                    )
-                  );
-                } else {
-                  displayDialog(context, "An Error Occurred", "No account was found matching that username and password");
-                }
-              },
-              child: Text('login'.i18n())
-            );
   }
 
   Widget buildCadastrarBt() {
@@ -341,7 +314,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
               Color(0x993f51b5),
               Color(0xcc3f51b5),
               Color(0xff3f51b5),
-              Color(0xff0000a2),
+              Color(0xff00000a2),
             ],
           ),
         ),

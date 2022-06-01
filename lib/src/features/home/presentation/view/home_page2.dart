@@ -2,26 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:org_eventos_app/src/features/home/presentation/view/map_page.dart';
 import 'package:org_eventos_app/src/features/home/presentation/view/place_widget.dart';
-import 'dart:convert' show json, base64, ascii;
-import 'package:http/http.dart' as http;
-import 'package:org_eventos_app/main.dart';
 
 class HomePage extends StatefulWidget {
-  //const HomePage({Key? key}) : super(key: key);
-
-  late final String jwt;
-  late final Map<String, dynamic> payload;
-  HomePage(this.jwt, this.payload);
-  
-  factory HomePage.fromBase64(String jwt) =>
-    HomePage(
-      jwt,
-      json.decode(
-        ascii.decode(
-          base64.decode(base64.normalize(jwt.split(".")[1]))
-        )
-      )
-    );
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -30,9 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   int _selectedIndex = 0;
-
-  late final String jwt = Modular.get();
-  late final Map<String, dynamic> payload = Modular.get();
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -58,7 +38,6 @@ class _HomePageState extends State<HomePage> {
 
   Color background_color = Color.fromRGBO(0, 0, 162, 1);
 
-  /*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,25 +92,5 @@ class _HomePageState extends State<HomePage> {
         onTap: _onItemTapped,
       ),
     );
-    */
-    @override
-  Widget build(BuildContext context) =>
-    Scaffold(
-      appBar: AppBar(title: Text("Secret Data Screen")),
-      body: Center(
-        child: FutureBuilder(
-          future: http.read(Uri.parse('$SERVER_IP/data'), headers: {"Authorization": jwt}),
-          builder: (context, snapshot) =>
-            snapshot.hasData ?
-            Column(children: <Widget>[
-              Text("${payload['username']}, here's the data:"),
-              Text(snapshot.data.toString(), style: Theme.of(context).textTheme.headline4)
-            ],)
-            :
-            snapshot.hasError ? Text("An error occurred") : CircularProgressIndicator()
-        ),
-      ),
-    );
   }
-
-  
+}
