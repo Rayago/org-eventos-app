@@ -1,157 +1,303 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
-import 'package:org_eventos_app/src/features/auth/presentation/view/widget/custom_button.dart';
+import 'package:org_eventos_app/services/api_service.dart';
+import 'package:org_eventos_app/src/features/auth/domain/model/login_request_model.dart';
+import 'package:org_eventos_app/src/features/auth/domain/model/register_request_model.dart';
+import 'package:org_eventos_app/src/features/auth/presentation/viewmodel/login_viewmodel.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
+import 'package:snippet_coder_utils/ProgressHUD.dart';
+import 'package:snippet_coder_utils/hex_color.dart';
 
-import '../widget/primary_button.dart';
+import '../../../../../../config.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(0, 0, 162, 1),
-        title: Text('signup'.i18n()),
-        leading: IconButton(
-          icon: Icon(Icons.keyboard_backspace),
-          onPressed: () {
-            Modular.to.navigate('/auth/');
-          },
+  _SignupPageState createState() {
+    return _SignupPageState();
+  }
+}
+
+class _SignupPageState extends State<SignupPage> {
+  bool manterConectado = false;
+  String? username = '';
+  String? password = '';
+  String? email = '';
+  bool isAPIcallProcess = false;
+  bool hidePassword = true;
+  GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
+  Widget build(BuildContext context){
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: HexColor("#283B71"),
+        body: ProgressHUD(
+          child: Form(
+            key: globalFormKey,
+            child: _registerUI(context),
+          ),
+          inAsyncCall: isAPIcallProcess,
+          opacity: 0.3,
+          key: UniqueKey(),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 70,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Text(
-                'data-hint'.i18n(),
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
+    );
+  }
 
-            /* Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Modular.to.pushNamed('/auth/');
-                    },
-                    child: Text('back'.i18n(),
-                        style: const TextStyle(
-                          color: Colors.black,
-                        )),
-                  ),
+  Widget _registerUI(BuildContext context){
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 4,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.white,
+                  Colors.white,
                 ],
               ),
-            ), */
-
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: SignupForm(),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: CustomButton(
-                text: 'signup'.i18n(),
-                where: '/auth/',
-                color: Color.fromRGBO(0, 0, 162, 1),
-                textColor: Colors.white,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(100),
+                bottomRight: Radius.circular(100),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SignupForm extends StatefulWidget {
-  const SignupForm({Key? key}) : super(key: key);
-
-  @override
-  State<SignupForm> createState() => _SignupFormState();
-}
-
-class _SignupFormState extends State<SignupForm> {
-  bool _escondido = true;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        buildInputForm('name'.i18n(), false),
-        buildInputForm('surname'.i18n(), false),
-        buildInputForm('Telefone', false),
-        buildInputForm('Email', false),
-        buildInputForm('password'.i18n(), true),
-        buildInputForm('confirm_password'.i18n(), true),
-      ],
-    );
-  }
-
-  Widget buildCadastrarBt() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 25),
-      width: double.infinity,
-      child: RaisedButton(
-          elevation: 5,
-          onPressed: () => print('Botão de cadastrar pressionado'),
-          padding: const EdgeInsets.all(15),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-          color: Colors.black,
-          child: Text(
-            'signup'.i18n(),
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          )),
-    );
-  }
-
-  Padding buildInputForm(String dica, bool senha) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: TextFormField(
-        obscureText: senha ? _escondido : false,
-        decoration: InputDecoration(
-          hintText: dica,
-          hintStyle: const TextStyle(color: Colors.black),
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-          ),
-          suffixIcon: senha
-              ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _escondido = !_escondido;
-                    });
-                  },
-                  icon: _escondido
-                      ? const Icon(Icons.visibility_off, color: Colors.black)
-                      : const Icon(
-                          Icons.visibility,
-                          color: Colors.black,
-                        ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  /*child: Image.asset(
+                    "assets/images/mapa.png",
+                    width: 250,
+                    fit: BoxFit.contain,
+                  ),*/
                 )
-              : null,
-        ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              bottom: 30,
+              top: 50,
+            ),
+            child: Text(
+              "Register",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 25,
+                color: Colors.white,
+              )
+            )
+          ),
+          FormHelper.inputFieldWidget(
+            context, 
+            "username",
+            "UserName", 
+            (onValidateVal){
+              if(onValidateVal.isEmpty){
+                return "Username can'\t be empty.";
+              }
+
+              return null;
+            }, 
+            (onSavedVal) {
+              username = onSavedVal;
+            },
+            borderFocusColor: Colors.white,
+            prefixIconColor: Colors.white,
+            borderColor: Colors.white,
+            textColor: Colors.white,
+            hintColor: Colors.white.withOpacity(0.7),
+            borderRadius: 10,
+          ),
+          
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: FormHelper.inputFieldWidget(
+              context, 
+              "password",
+              "PassWord", 
+              (onValidateVal){
+                if(onValidateVal.isEmpty){
+                  return "Password can'\t be empty.";
+                }
+
+                return null;
+              }, 
+              (onSavedVal) {
+                password = onSavedVal;
+              },
+              borderFocusColor: Colors.white,
+              prefixIconColor: Colors.white,
+              borderColor: Colors.white,
+              textColor: Colors.white,
+              hintColor: Colors.white.withOpacity(0.7),
+              borderRadius: 10,
+              obscureText: hidePassword,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                color: Colors.white.withOpacity(0.7),
+                icon: Icon(
+                  hidePassword ? Icons.visibility_off : Icons.visibility,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: FormHelper.inputFieldWidget(
+              context, 
+              "email",
+              "email", 
+              (onValidateVal){
+                if(onValidateVal.isEmpty){
+                  return "E-mail can'\t be empty.";
+                }
+
+                return null;
+              }, 
+              (onSavedVal) {
+                email = onSavedVal;
+              },
+              borderFocusColor: Colors.white,
+              prefixIconColor: Colors.white,
+              borderColor: Colors.white,
+              textColor: Colors.white,
+              hintColor: Colors.white.withOpacity(0.7),
+              borderRadius: 10,
+            ),
+          ),
+          
+          SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: FormHelper.submitButton(
+              "Register",
+              (){
+                if(validateAndSave()) {
+                  setState(() {
+                    isAPIcallProcess = true;
+                  });
+
+                  RegisterRequestModel model = RegisterRequestModel(
+                    username: username!, 
+                    password: password!,
+                    email: email!
+                  );
+
+                  APIService.register(model).then((response) => {
+                    setState(() { 
+                    isAPIcallProcess = false;
+                    }),
+
+                    if(response.data != null) {
+                      FormHelper.showSimpleAlertDialog(
+                        context,
+                        Config.appName, 
+                        "Registration Successfull. Please login to the account.", 
+                        "OK", 
+                        () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context, 
+                            '/', 
+                            (route) => false
+                          );
+                        },
+                      )
+                    } else {
+                      FormHelper.showSimpleAlertDialog(
+                        context,
+                        Config.appName, 
+                        response.message, 
+                        "OK", 
+                        () {
+                          Navigator.pop(context);
+                        }
+                      )
+                    }
+                  });
+                } 
+              },
+              btnColor: HexColor("#283B71"),
+              borderColor: Colors.white,
+              txtColor: Colors.white,
+              borderRadius: 10,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: Text(
+              "OR",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 25, top: 10),
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14.0,
+                    ),
+                  children: <TextSpan>[
+                    TextSpan(text: "Don't have an account? "),
+                    TextSpan(
+                      text: 'Sign up',
+                      style: TextStyle(
+                        color: Colors.white,
+                        decoration: TextDecoration.underline,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Modular.to.pushNamed('/auth/verify');
+                          //print("Forget Password");
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
+  }
+
+  bool validateAndSave(){
+    final form = globalFormKey.currentState;
+
+    if (form!.validate()) {
+      form.save();
+      return true;
+    } else {
+      return false;
+    }
   }
 }

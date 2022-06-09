@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  api_cache_manager: ^1.0.2
+  snippet_coder_utils: ^1.0.9
   
   flutter_localizations: 
     sdk: flutter
