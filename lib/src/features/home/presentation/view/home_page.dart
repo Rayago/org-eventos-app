@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:org_eventos_app/src/features/home/presentation/view/map_page.dart';
 import 'package:org_eventos_app/src/features/home/presentation/view/place_widget.dart';
+import 'package:org_eventos_app/src/features/home/presentation/view/config_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,10 +23,7 @@ class _HomePageState extends State<HomePage> {
     const Text('index: 0'),
     PlaceWidget(),
     MapSample(),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+    ConfigPage(),
   ];
 
   void _onItemTapped(int index) {
