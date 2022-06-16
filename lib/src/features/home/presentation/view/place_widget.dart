@@ -1,24 +1,88 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:http/http.dart' as http;
 
-class PlaceWidget extends StatelessWidget {
+class PlaceWidget extends StatefulWidget {
   const PlaceWidget({Key? key}) : super(key: key);
+
+  @override
+  State<PlaceWidget> createState() => _PlaceWidgetState();
+}
+
+class _PlaceWidgetState extends State<PlaceWidget> {
+  Future<void> fetch() async {
+    var url = Uri.parse(
+        'https://pdm-recommendation.herokuapp.com/get_recommendation/500');
+    var response = await http.get(url);
+
+    if (response.statusCode == 404) {
+      setState(() {
+        lista = [];
+        size = 0;
+      });
+      return;
+    }
+
+    var json = jsonDecode(response.body);
+
+    setSize(json['size']);
+
+    setState(() {
+      lista = [];
+      for (int i = 0; i < size; i++) {
+        lista.add(json['data'][i]);
+      }
+    });
+  }
+
+  List lista = [];
+
+  int size = 0;
+
+  setSize(int num) {
+    size = num;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
       child: ListView(
-        
         children: [
-          Place("name 1", '1,6 km', 4.7),
-          Place("name 2", '2,3 km', 4.6),
-          Place("name 3", '4,1 km', 4.5),
-          Place("name 4", '4,7 km', 4.2),
-          Place("name 5", '2,3 km', 3.9),
-          Place("name 6", '2,2 km', 3.8),
-          Place("name 7", '1,9 km', 3.7),
-          Place("name 8", '2,8 km', 3.6),
+          InkWell(
+            onTap: () {
+              fetch();
+            },
+            child: Container(
+              height: 30,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.black,
+              ),
+              child: Text(
+                'Buscar',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
+          ListView.builder(
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              if (index == 0) {
+                return SizedBox(
+                  height: 20,
+                );
+              }
+              return Place(lista[index], 'distance', 5);
+            },
+            itemCount: size,
+          )
         ],
       ),
     );
@@ -33,7 +97,7 @@ class PlaceWidget extends StatelessWidget {
         ),
         color: Color.fromRGBO(228, 228, 218, 1),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(6.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -48,7 +112,7 @@ class PlaceWidget extends StatelessWidget {
                         Text(
                           name,
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Ratting(ratting),
                       ],

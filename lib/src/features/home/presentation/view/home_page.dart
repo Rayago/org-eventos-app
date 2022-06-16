@@ -1,3 +1,5 @@
+ import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:org_eventos_app/src/features/home/presentation/view/map_page.dart';
@@ -17,10 +19,6 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    /* Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ), */
     const Text('index: 0'),
     PlaceWidget(),
     MapSample(),
