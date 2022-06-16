@@ -8,7 +8,6 @@ Componentes do grupo:
 - Raymundo Guimarães
 
 - [Protótipo do projeto no Figma](https://www.figma.com/file/ElYFagSMAuD8Y67BmaOYWL/Tourism-App)
-- [Artigo base para o projeto](https://drive.google.com/file/d/1Jqb0ZKMdxVTeUkJWx0nOQWC_hAmtZbvS/view?usp=sharing)
 
 ## Getting Started
 

@@ -1,0 +1,107 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Impactos da COVID-19 \\ no turismo brasiliense\\
+{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+should not be used}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
+}
+
+\author{\IEEEauthorblockN{Eduardo Ofuji}
+\IEEEauthorblockA{\textit{Engenharia da Computação} \\
+\textit{IESB}\\
+Brasília, Brasil \\
+eduardo.ofuji@iesb.edu.br}
+\and
+\IEEEauthorblockN{Marco Paulo Nocello}
+\IEEEauthorblockA{\textit{Ciências da Computação} \\
+\textit{IESB}\\
+Brasília, Brasil \\
+marco.nocello@iesb.edu.br}
+\and
+\IEEEauthorblockN{Pedro Faleiros}
+\IEEEauthorblockA{\textit{Ciências da Computação} \\
+\textit{IESB}\\
+Brasília, Brasil \\
+pedro.faleiros@iesb.edu.br}
+\and
+\IEEEauthorblockN{Raymundo Guimarães}
+\IEEEauthorblockA{\textit{Engenharia da Computação} \\
+\textit{IESB}\\
+Brasília, Brasil \\
+raymundo.guimaraes@iesb.edu.br}
+}
+
+\maketitle
+
+\section{Resumo}
+O mercado turístico sofreu muito durante esses dois anos de pandemia. Quando o mundo todo deve que "congelar" para impedir a disseminação da COVID-19, várias empresas, cidades, comércio, entre outros que tinham seu sustento voltado para esse mercado tiveram que sobreviver ou até mesmo fechar suas portas, porém com a volta da "normalidade" a criação de um app que mostre a localização dos mesmos é uma forma muito eficiente para ajudar à alavancar esse mercado. Neste artigo será mostrado como a pandemia afetou os números de alguns lugares que necessitava de uma circulção de pessoas constante para se manter, e como uma aplicação móvel pode ajudar nesse problema. O objetivo é fazer o aplicativo rodar em smartphones com sistema Android, assim criando uma plataforma com um manuseio fácil e rápido para achar exatamente o que procura, assim criando um sistema de recomendação baseado no perfil do usuário. 
+
+\begin{IEEEkeywords}
+turismo, sistema de recomendação, Brasil, Brasília
+\end{IEEEkeywords}
+
+\section{Introdução}
+O turismo é um dos pilares da economia de um país. Com uma pandemia que durou dois anos com inúmeras restrições pode-se dizer que esse ramo sofreu muito. Com a volta da "normalidade" oportunidades de ajudar a elevar o turismo surgem, e isso se soma mais ainda nos dias de hoje, que temos informações disponíveis facilmente em nossas mãos.
+
+Muitas pessoas foram extremamentes preojudicadas por conta da quarentena que se estabeleceu ao redor do mundo, medida que era necessária para  combater a pandemia que surgiu. Em 2019 o Brasil registrou um movimento de 238,6 bilhões de reais, um aumento de 2,2 por cento em relação a 2017, último melhor ano registrado\cite{b1}. Porém com o início da pandemia em 2020, o setor registrou uma queda de 36 por cento, só havendo uma retomada positiva em 2021[2].Tendo em vista que o setor de turismo é um dos que mais movimenta dinheiro, e com as medidas de prevenção contra a COVID sendo melhor estabelecidas, em alguns países, esse ramo vai voltar a crescer e gerar mais receitas para locais que se beneficiam da alta circulção de pessoas.
+
+Para ajudar esse crescimento, tanto para as empresas, quanto para quem procura locais de seu interesse, o desenvolvimento de um aplicativo que mostre exatamente o que procura é uma maneira viável e eficiente para a volta desse comércio. E também mostra informações necessárias para pessoas com necessidades, seja elas físicas ou alimentares, assim trazendo o máximo de dados possíveis para todo tipo de usuário\cite{b3}.
+
+
+
+\section{Contexto}
+Por meio de pesquisas, fica evidente que a porcentagem do turismo no brasil teve uma queda significante nos anos de 2020-2021. No começo do ano de 2022 a volta da "normalidade" que vivíamos está cada vez mais próxima, assim o setor de turismo aos poucos tem voltado a crescer novamente e com isso um grande demanda no setor de turismo.
+
+\subsection{Problema}
+No período da pandemia muitos locais que dependiam do turismo foram impedidas de continuar com suas atividades, alguns deles chegando ao ponto de fecharem suas portas. O que fazer para ajudar aqueles que conseguiram se manter durante esses dois anos e incentivar o turismo na capital do Brasil?
+
+\section{Objetivo Geral}
+Com essa ideia em mente, uma maneira de impulsionar o turismo brasiliense se tornou uma meta, e nos dias atuais existem várias maneiras que podem ajudar nesse objetivo sendo também uma maneira rápida e eficiente, dessa forma fazendo o setor de turismo crescer mais do que já tem sido mostrado nos últimos dados coletados\cite{b2}. 
+
+\section{Obejtivos Específicos}
+\begin{itemize}
+    \item Criar uma paltaforma através de um aplicativo de dispositivo móvel que mostre as localidades de brasília;
+    \item Implementar um sistema de recomendação para melhor experiência do usuário;
+    \item Conseguir dados concretos de empresas no ramo de turismo.
+\end{itemize}
+
+
+\section{Referencial teórico}
+Ao pesquisar em diversos artigos, foi encontrado um muito interessante o "App for Inclusive Tourism"\cite{b3}, que sua base de estudo consistia em fazer uma aplicação móvel que mostrasse locais que disponibilizavam de uma acessibilidade maior para pessoas com necessidades especiais, porém como é citado no próprio artigo o foco do app era deixar o turismo mais inclusivo. Tendo essa pesquisa como base e ampliando a ideia da mesma, que está sendo o foco dessa pesquisa. E na parte do sistema de recomendação foi utilizado uma filtragem colaborativa\cite{b4} para melhorar os locais recomendados.
+
+\section{Trabalhos correlatos}
+Para a pesquisa sobre o impacto da COVID-19 no setor de turismo, foram utilizados dados antes de começar a pandemia no brasil\cite{b1} e depois o quanto havia caído em 2020\cite{b2}, o ano que foi o grande ápice da doença, comparando os dois fica claro como essa situação global afetou muito o mercado turístico no Brasil, fazendo muitas pessoas do ramo fecharem suas portas diante da grande crise que ocorreu. Com a ideia de fazer uma aplicação móvel para ajudar o turismo muitos artigos foram pesquisados para se ter uma base, o \cite{b3} fala de um aplicativo de turismo inclusivo, já para o sistema de recomendação foi utilizado uma filtragem colaborativa \cite{b4} para otimizar ao máximo o sistema através de outros usuários.
+
+\section{Metodologia}
+As bibliotecas utilizadas foram "random" e "names" do python para gerar dois datasets. Sendo um deles com 10 mil nomes de lugares gerados aleatoriamente e cada um tendo seu próprio ID, o outro dataset com ID's de usuários seguidos com o ID de um local e uma nota de avaliação, também sendo aleatorios. Foi considerado que cada usuário tem no mínimo 3 e no máximo 100 avaliações. Colocou-se 1000 usuários avaliando aleatoriamente um dos 10 mil lugares com uma nota, também sendo aleatória, de 1 a 5. Para fazer a recomendação foi utilizado o algoritmo KNN e para isso foi utilizado "Nearest Neighbors" da biblioteca Scikit-Learn do Python. Utilizou-se a biblioteca "pandas" para modelar os dados dos datasets e criar um dataframe, esse mesmo dataframe foi utilizado no "Nearest Neighbors", usando a métrica do cosseno e o n\_neighbors igual a 4. Pegando então os 3 vizinhos mais próximos, pois com n\_neighbors igual a 4 ele irá retornar uma lista com os 4 vizinhos mais próximos, mas o primeiro elemento será ele mesmo.
+
+\section{Resultados obtidos}
+Ao visitar empresas do bairro Sudoeste foi obtido uma queda média de 22\% no faturamento, após o período da pandemia, infelizmente muitas empresas tiveram suas portas fechadas e não tiveram a mesma sorte daquelas que conseguiram permanecer. Por meio do Google Cloud foi implementado um mapa na aplicação móvel para visualização do mapa de brasília para os usuários.
+
+
+Ao criar a plataforma é esperado que tenha todas informações possíveis dentro dela, para assim atrair uma grande variedade pessoas. E para satisfazer seus interesses a aplicação de um sistema de recomendação é uma ótima maneira para mostrar justamente o que a pessoa procura, assim mostrando no mapa as localidades de sua preferencia. Com a colaboração das empresas em compartilhar as informações para uma melhor base teórica e pesquisa.
+
+\section{Conclusão}
+Nesse artigo foi apresentado um trabalho sobre desenvolvimento de uma aplicação móvel em Android com o objetivo de aumentar o turismo em Brasília, mostrando restaurantes, pontos turísticos entre outros por meio da aplicação de um mapa pela Google Cloud, e para facilitar a experiência dos usuários foi desenvolvido um sistema de recomendação, por meio de filtragem colaborativa com as avaliações dos locais, assim mostrando possíveis locais de interesse para o usuário. Assim tentando contribuir ao máximo o mercado turístico brasiliense após 2 anos de pandemia, por conta da COVID-19, um setor que foi muito afetado ao redor do mundo e a criação de um app é uma das formas mais viáveis atualmente para ajudar nesse quesito.
+
+Por mais que o objetivo do tarbalho tenha sido somente os locais de Brasília, fica como um trabalho futuro a expansão de território assim ajudando muitas localidades que dependem do setor de turismo para sua sobrevivência, muitos locais ao redor do Brasil tem sua economia baseada na ida e vinda de turistas em várias épocas do ano, então uma ampliação desse escopo seria um grande passo. 
+
+\begin{thebibliography}{00}
+\bibitem{b1} https://www.gov.br/turismo/pt-br/assuntos/noticias/turismo-movimentou-r-2386-bilhoes-no-brasil-em-2019-aumento-de-2c2
+\bibitem{b2} https://www.gov.br/pt-br/noticias/viagens-e-turismo/2021/12/turismo-tem-retomada-em-2021-e-espera-aumento-na-geracao-de-empregos-no-setor
+\bibitem{b3} Serra, R., Metrolho, J., and Ribeiro, F. (2019). App for Inclusive Tourism: A case study. 2019 14th Iberian Conference on Information Systems and Technologies (CISTI)
+\bibitem{b4}PINHEIRO, Matheus Franca; DA SILVA, Nádia Félix Felipe. Sistemas de Recomendação com Filtros Colaborativos: um Estudo Comparativo. In: ESCOLA REGIONAL DE INFORMÁTICA DE GOIÁS (ERI-GO), 7. , 2019, Goiânia. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2019 . p. 155-168.
+\end{thebibliography}
+
+\end{document}
