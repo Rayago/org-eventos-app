@@ -267,16 +267,16 @@ class _SignupPageState extends State<SignupPage> {
                     fontSize: 14.0,
                     ),
                   children: <TextSpan>[
-                    TextSpan(text: "Don't have an account? "),
+                    TextSpan(text: "Already have an account? "),
                     TextSpan(
-                      text: 'Sign up',
+                      text: 'Log in',
                       style: TextStyle(
                         color: Colors.white,
                         decoration: TextDecoration.underline,
                       ),
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          Modular.to.pushNamed('/auth/verify');
+                          Modular.to.pushNamed('/');
                           //print("Forget Password");
                       },
                     ),

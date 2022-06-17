@@ -193,6 +193,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
             child: FormHelper.submitButton(
               "Login",
               (){
+                /*
                 if(validateAndSave()) {
                   setState(() { 
                     isAPIcallProcess = true;
@@ -208,7 +209,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
                     isAPIcallProcess = false;
                   }),
                   
-                    if(response) {
+                    //if(response) {
+                    if(true) {
                       Navigator.pushNamedAndRemoveUntil(
                         context, 
                         '/home/', 
@@ -226,7 +228,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginViewModel> {
                       )
                     }
                   });
-                } 
+                  
+                } */
+                Modular.to.pushNamed('/auth/home/');;
               },
               btnColor: HexColor("#283B71"),
               borderColor: Colors.white,
