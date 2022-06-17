@@ -1,0 +1,34 @@
+{
+    "app_name" : "App",
+	
+    "username" : "Usuario",
+    "username_hint": "Digite seu nome de usuario",
+    "email_hint": "Digite seu e-mail",
+    "password": "Senha",
+    "confirm_password": "Confirme sua senha",
+    "password_hint": "Digite sua senha",
+    "login" : "Entrar",
+    "forgot_password" : "Esqueci minha senha",
+    "signup" : "Cadastrar",
+    "keep_connected":"Manter conectado",
+    "no_account":"Ainda não possui uma conta?",
+    "back":"Voltar",
+    "send":"Enviar",
+    "verify":"Verify",
+    "verification_code":"Código de verificação",
+    
+    "onboard-title":"Bem vindo!",
+
+    "onboard-description-1":"Descubra lugares incríveis em Brasília",
+    "onboard-description-2":"Selecione seus interesses",
+    "onboard-description-3":"Veja locais recomendados pra você",
+    "onboard-description-4":"Busque por restaurantes, pontos turísticos, parques e muito mais",
+
+    "next":"Próximo",
+    "enter":"Entrar",
+    "data-hint":"Insira seus dados",
+    "verification_hint":"Insira seu e-mail e enviaremos um código de verificaçao para ele",
+    "reset_password":"Redefinir senha",
+    "surname":"Sobrenome",
+    "name":"Nome"
+}

@@ -1,19 +1,26 @@
-import 'package:flutter/material.dart';
-//import 'telaLogin.dart';
-import 'onboard.dart';
+ import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:org_eventos_app/services/shared_service.dart';
+import 'package:org_eventos_app/src/features/auth/presentation/view/page/login_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'src/app_widget.dart';
+import 'src/app_module.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Tela de login',
-      debugShowCheckedModeBanner: false,
-      theme: new ThemeData(scaffoldBackgroundColor: const Color(0xff0000a2)),
-      home: Onboard(),
-    );
-  }
+//Widget _defaultHome = const LoginPage();
+
+void main()  async{
+  //WidgetsFlutterBinding.ensureInitialized();
+
+  //bool _result = await SharedService.isLoggedIn();
+  //if(_result) {
+    //Modular.to.pushNamed('/home/');
+  //}
+
+  runApp(
+    ModularApp(
+      module: AppModule(),
+      child: const AppWidget(),
+    ),
+  );
 }
+//git push -u origin estrutura
